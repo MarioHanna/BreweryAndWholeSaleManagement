@@ -15,9 +15,4 @@
     <ProjectReference Include="..\BreweryAndWholeSaleManagement.Domain\BreweryAndWholeSaleManagement.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Beers\Handlers\Commands\" />
-    <Folder Include="Features\Beers\Requests\Commands\" />
-  </ItemGroup>
-
 </Project>
