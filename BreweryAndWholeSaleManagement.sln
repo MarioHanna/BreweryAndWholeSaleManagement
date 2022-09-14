@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6D4CFEDA-3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreweryAndWholeSaleManagement.Domain", "BreweryAndWholeSaleManagement.Domain\BreweryAndWholeSaleManagement.Domain.csproj", "{0E9E0324-01F5-4F41-92BA-5E6712388763}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreweryAndWholeSaleManagement.Application", "BreweryAndWholeSaleManagement.Application\BreweryAndWholeSaleManagement.Application.csproj", "{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{0E9E0324-01F5-4F41-92BA-5E6712388763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E9E0324-01F5-4F41-92BA-5E6712388763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E9E0324-01F5-4F41-92BA-5E6712388763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 		{05AE5013-1B4D-4FEA-B600-3A30C7F27FBC} = {04735CC2-27B3-47B9-8269-F7F3203FFCAA}
 		{6D4CFEDA-399F-49D8-B6DE-64D08541CFD2} = {04735CC2-27B3-47B9-8269-F7F3203FFCAA}
 		{0E9E0324-01F5-4F41-92BA-5E6712388763} = {6D4CFEDA-399F-49D8-B6DE-64D08541CFD2}
+		{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4} = {6D4CFEDA-399F-49D8-B6DE-64D08541CFD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F5DCBB-D1A7-4C64-A00E-91F8C1AD11CB}
