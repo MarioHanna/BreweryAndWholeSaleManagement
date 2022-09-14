@@ -9,5 +9,6 @@ namespace BreweryAndWholeSaleManagement.Application.Persistence.Contracts
 {
     public interface IBeerRepository : IGenericRepository<Beer>
     {
+        Task<List<Beer>> GetBeerListByBrewery(int BreweryId);
     }
 }

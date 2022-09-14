@@ -8,10 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BreweryAndWholeSaleManagement.Domain\BreweryAndWholeSaleManagement.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Beers\Handlers\Commands\" />
+    <Folder Include="Features\Beers\Requests\Commands\" />
   </ItemGroup>
 
 </Project>

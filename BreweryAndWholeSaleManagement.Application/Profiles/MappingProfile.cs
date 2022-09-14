@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BreweryAndWholeSaleManagement.Application.DTOs;
+using BreweryAndWholeSaleManagement.Application.DTOs.Beer;
 using BreweryAndWholeSaleManagement.Domain;
 using System;
 using System.Collections.Generic;
