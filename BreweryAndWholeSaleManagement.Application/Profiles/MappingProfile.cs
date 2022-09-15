@@ -15,6 +15,8 @@ namespace BreweryAndWholeSaleManagement.Application.Profiles
         public MappingProfile()
         {
             CreateMap<Beer, BeerDto>().ReverseMap();
+            CreateMap<Beer, CreateBeerDto>().ReverseMap();
+
             CreateMap<Brewery, BreweryDto>().ReverseMap();
             CreateMap<Wholesaler, WholesalerDto>().ReverseMap();
             CreateMap<WholesalerStock, WholesalerStockDto>().ReverseMap();
