@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BreweryAndWholeSaleManagement.Application.Features.Beers.Requests.Queries
 {
-    public class GetBeerListByBreweryRequest : IRequest<List<BeerDto>>
+    public class GetBeerListByBreweryRequest : IRequest<List<BeerListDTO>>
     {
         public int BreweryId { get; set; }
     }

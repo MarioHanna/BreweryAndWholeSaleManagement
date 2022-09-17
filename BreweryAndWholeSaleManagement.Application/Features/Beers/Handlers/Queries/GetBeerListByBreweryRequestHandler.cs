@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BreweryAndWholeSaleManagement.Application.Features.Beers.Handlers.Queries
 {
-    public class GetBeerListByBreweryRequestHandler : IRequestHandler<GetBeerListByBreweryRequest, List<BeerDto>>
+    public class GetBeerListByBreweryRequestHandler : IRequestHandler<GetBeerListByBreweryRequest, List<BeerListDTO>>
     {
         private readonly IBeerRepository _beerRepository;
         private readonly IMapper _mapper;
@@ -22,10 +22,10 @@ namespace BreweryAndWholeSaleManagement.Application.Features.Beers.Handlers.Quer
             _mapper = mapper;
         }
 
-        public async Task<List<BeerDto>> Handle(GetBeerListByBreweryRequest request, CancellationToken cancellationToken)
+        public async Task<List<BeerListDTO>> Handle(GetBeerListByBreweryRequest request, CancellationToken cancellationToken)
         {
             var beerList = await _beerRepository.GetBeerListByBrewery(request.BreweryId);
-            return _mapper.Map<List<BeerDto>>(beerList);
+            return _mapper.Map<List<BeerListDTO>>(beerList);
         }
     }
 }
