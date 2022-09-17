@@ -1,4 +1,5 @@
 ﻿using BreweryAndWholeSaleManagement.Application.DTOs.Beer;
+using BreweryAndWholeSaleManagement.Application.Features.Beers.Requests.Commands;
 using BreweryAndWholeSaleManagement.Application.Features.Beers.Requests.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,22 +20,17 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
         }
 
         // GET: api/<BeerController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("GetBeerList")]
+        public async Task<ActionResult<List<BeerDto>>> GetAsync()
         {
-            return new string[] { "value1", "value2" };
-        }
+            var BeerList = await _mediator.Send(new GetBeerListRequest());
 
-        // GET api/<BeerController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            return Ok(BeerList);
         }
 
         // GET api/<BeerController>/5
         [HttpGet("GetBeerListByBrewery/{BreweryId}")]
-        public async Task<ActionResult<List<BeerDto>>> GetBeerListByBrewery(int BreweryId)
+        public async Task<ActionResult<List<BeerListDTO>>> GetBeerListByBrewery(int BreweryId)
         {
             var BeerList = await _mediator.Send(new GetBeerListByBreweryRequest
             {
@@ -45,21 +41,26 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
         }
 
         // POST api/<BeerController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("AddNewBeer")]
+        public async Task Post([FromBody] CreateBeerDto createBeerDto)
         {
+            var command = new CreateBeerCommand { CreateBeerDto = createBeerDto };
+            await _mediator.Send(command);
         }
 
-        // PUT api/<BeerController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT api/<BeerController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // DELETE api/<BeerController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("DeleteBeer/{BeerId}")]
+        public async Task<ActionResult> Delete(int BeerId)
         {
+            var command = new DeleteBeerCommand { Id = BeerId };
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }
