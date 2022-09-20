@@ -42,10 +42,11 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
 
         // POST api/<BeerController>
         [HttpPost("AddNewBeer")]
-        public async Task Post([FromBody] CreateBeerDto createBeerDto)
+        public async Task<ActionResult<int>> Post([FromBody] CreateBeerDto createBeerDto)
         {
             var command = new CreateBeerCommand { CreateBeerDto = createBeerDto };
-            await _mediator.Send(command);
+            var Id = await _mediator.Send(command);
+            return Ok(Id);
         }
 
         //// PUT api/<BeerController>/5

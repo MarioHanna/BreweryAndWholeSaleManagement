@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BreweryAndWholeSaleManagement.Application.DTOs
+namespace BreweryAndWholeSaleManagement.Application.DTOs.WholesalerStock
 {
     public class WholesalerStockDto : BaseDto
     {

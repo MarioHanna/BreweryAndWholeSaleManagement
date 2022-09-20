@@ -15,4 +15,9 @@
     <ProjectReference Include="..\BreweryAndWholeSaleManagement.Domain\BreweryAndWholeSaleManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\WholesalerStocks\Handlers\Queries\" />
+    <Folder Include="Features\WholesalerStocks\Requests\Queries\" />
+  </ItemGroup>
+
 </Project>

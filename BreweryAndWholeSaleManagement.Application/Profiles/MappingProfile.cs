@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BreweryAndWholeSaleManagement.Application.DTOs;
 using BreweryAndWholeSaleManagement.Application.DTOs.Beer;
+using BreweryAndWholeSaleManagement.Application.DTOs.WholesalerStock;
 using BreweryAndWholeSaleManagement.Domain;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,11 @@ namespace BreweryAndWholeSaleManagement.Application.Profiles
             CreateMap<Beer, BeerListDTO>().ReverseMap();
 
             CreateMap<Brewery, BreweryDto>().ReverseMap();
+
             CreateMap<Wholesaler, WholesalerDto>().ReverseMap();
+
             CreateMap<WholesalerStock, WholesalerStockDto>().ReverseMap();
+            CreateMap<WholesalerStock, CreateWholesalerStockDto>().ReverseMap();
         }
     }
 }
