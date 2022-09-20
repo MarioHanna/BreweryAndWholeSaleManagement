@@ -1,4 +1,5 @@
-﻿using BreweryAndWholeSaleManagement.Application.DTOs.Common;
+﻿using BreweryAndWholeSaleManagement.Application.DTOs.Brewery;
+using BreweryAndWholeSaleManagement.Application.DTOs.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

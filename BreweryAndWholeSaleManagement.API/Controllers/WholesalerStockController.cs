@@ -50,10 +50,5 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
             return NoContent();
         }
 
-        //// DELETE api/<WholesalerStockController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using BreweryAndWholeSaleManagement.Application.DTOs;
 using BreweryAndWholeSaleManagement.Application.DTOs.Beer;
+using BreweryAndWholeSaleManagement.Application.DTOs.Brewery;
+using BreweryAndWholeSaleManagement.Application.DTOs.Wholesaler;
 using BreweryAndWholeSaleManagement.Application.DTOs.WholesalerStock;
 using BreweryAndWholeSaleManagement.Domain;
 using System;

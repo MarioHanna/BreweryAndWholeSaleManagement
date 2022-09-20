@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BreweryAndWholeSaleManagement.Application.DTOs
+namespace BreweryAndWholeSaleManagement.Application.DTOs.Brewery
 {
-    public class WholesalerDto : BaseDto
+    public class BreweryDto : BaseDto
     {
         public string Name { get; set; }
     }
