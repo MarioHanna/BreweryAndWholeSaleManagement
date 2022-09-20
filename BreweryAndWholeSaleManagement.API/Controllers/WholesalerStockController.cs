@@ -18,22 +18,22 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
             _mediator = mediator;
         }
 
-        // GET: api/<WholesalerStockController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //// GET: api/<WholesalerStockController>
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
-        // GET api/<WholesalerStockController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/<WholesalerStockController>/5
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/<WholesalerStockController>
-        [HttpPost]
+        [HttpPost("CreateWholesalerStock")]
         public async Task<ActionResult<int>> Post([FromBody] CreateWholesalerStockDto createWholesalerStockDto)
         {
             var command = new CreateWholesalerStockCommand { createWholesalerStockDto = createWholesalerStockDto };
@@ -42,15 +42,18 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
         }
 
         // PUT api/<WholesalerStockController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("UpdateWholesalerStock")]
+        public async Task<ActionResult> Put([FromBody] UpdateWholesalerStockDto wholesalerStockDto)
         {
+            var command = new UpdateWholesalerStockCommand { updateWholesalerStockDto = wholesalerStockDto };
+            await _mediator.Send(command);
+            return NoContent();
         }
 
-        // DELETE api/<WholesalerStockController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<WholesalerStockController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

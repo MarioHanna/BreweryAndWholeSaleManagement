@@ -25,6 +25,7 @@ namespace BreweryAndWholeSaleManagement.Application.Profiles
 
             CreateMap<WholesalerStock, WholesalerStockDto>().ReverseMap();
             CreateMap<WholesalerStock, CreateWholesalerStockDto>().ReverseMap();
+            CreateMap<WholesalerStock, UpdateWholesalerStockDto>().ReverseMap();
         }
     }
 }
