@@ -9,5 +9,6 @@ namespace BreweryAndWholeSaleManagement.Application.Persistence.Contracts
 {
     public interface IWholesalerStockRepository : IGenericRepository<WholesalerStock>
     {
+        Task<WholesalerStock> GetWholesalerStockDetails(int BeerId, int wholesalerId);
     }
 }
