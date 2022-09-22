@@ -12,6 +12,5 @@ namespace BreweryAndWholeSaleManagement.Application.DTOs.Request
         public string WholesalerName { get; set; }
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }
-        public string Status { get; set; }
     }
 }

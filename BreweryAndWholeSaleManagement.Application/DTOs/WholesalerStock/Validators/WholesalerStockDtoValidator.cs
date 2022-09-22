@@ -11,12 +11,20 @@ namespace BreweryAndWholeSaleManagement.Application.DTOs.WholesalerStock.Validat
     public class WholesalerStockDtoValidator : AbstractValidator<WholesalerStockDto>
     {
         private readonly IWholesalerStockRepository _wholesalerStockRepository;
+        public int _requestedQuantity { get; set; }
 
-        public WholesalerStockDtoValidator(IWholesalerStockRepository wholesalerStockRepository)
+        public WholesalerStockDtoValidator(IWholesalerStockRepository wholesalerStockRepository,int requestedQuantity)
         {
             _wholesalerStockRepository = wholesalerStockRepository;
+            _requestedQuantity = requestedQuantity;
 
+            RuleFor(p => p.Id)
+                .GreaterThan(0)
+                .WithMessage("The beer must be sold by the wholesaler.");
 
+            RuleFor(p => p.Quantity)
+                .GreaterThan(_requestedQuantity)
+                .WithMessage("The number of beers ordered cannot be greater than the wholesaler's stock.");
         }
     }
 }

@@ -29,6 +29,10 @@ namespace BreweryAndWholeSaleManagement.Application.DTOs.Request.Validators
                 })
                 .WithMessage("The {PropertyName} must exist.");
 
+            RuleFor(p => p.Quantity)
+                .GreaterThan(0)
+                .WithMessage("The order cannot be empty.");
+
             RuleFor(p => p.BeerId)
                 .GreaterThan(0)
                 .MustAsync(async (id, token) =>

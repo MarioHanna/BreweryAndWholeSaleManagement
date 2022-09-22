@@ -2,6 +2,7 @@
 using BreweryAndWholeSaleManagement.Application.DTOs.Request;
 using BreweryAndWholeSaleManagement.Application.DTOs.Request.Validators;
 using BreweryAndWholeSaleManagement.Application.DTOs.WholesalerStock;
+using BreweryAndWholeSaleManagement.Application.DTOs.WholesalerStock.Validators;
 using BreweryAndWholeSaleManagement.Application.Exceptions;
 using BreweryAndWholeSaleManagement.Application.Features.ClientRequests.Requests;
 using BreweryAndWholeSaleManagement.Application.Persistence.Contracts;
@@ -53,22 +54,22 @@ namespace BreweryAndWholeSaleManagement.Application.Features.ClientRequests.Hand
                 WholesalerStock wholesalerStock = await _unitOfWork.wholesalerStockRepository.GetWholesalerStockDetails(beerRequest.BeerId, beerRequest.WholesalerId);
                 WholesalerStockDto wholesalerStockDto = _mapper.Map<WholesalerStockDto>(wholesalerStock);
 
+                if (wholesalerStock == null)
+                    throw new NotFoundException(nameof(wholesalerStock), beerRequest.BeerId);
+
+                var wholesalerStockDtoValidator = new WholesalerStockDtoValidator(_unitOfWork.wholesalerStockRepository,beerRequest.Quantity);
+                var wholesalerStockDtoValidationResult = await wholesalerStockDtoValidator.ValidateAsync(wholesalerStockDto);
+
+                if (wholesalerStockDtoValidationResult.IsValid == false)
+                    throw new ValidationException(wholesalerStockDtoValidationResult);
 
                 beerRequestResultDto.BeerName = wholesalerStock.Beer.Name;
                 beerRequestResultDto.WholesalerName = wholesalerStock.Wholesaler.Name;
                 beerRequestResultDto.Quantity = beerRequest.Quantity;
                 beerRequestResultDto.TotalPrice = beerRequest.Quantity * wholesalerStock.Beer.Price;
 
-                if (beerRequest.Quantity <= wholesalerStock.Quantity)
-                {
-                    BeerCount += beerRequest.Quantity;
-                    TotalPrice += beerRequestResultDto.TotalPrice;
-                    beerRequestResultDto.Status = "Accepted";
-                }
-                else
-                {
-                    beerRequestResultDto.Status = "Rejected";
-                }
+                BeerCount += beerRequest.Quantity;
+                TotalPrice += beerRequestResultDto.TotalPrice;
 
                 quoteRequestResultDto.BeerRequestsResult.Add(beerRequestResultDto);
             }
