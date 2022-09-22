@@ -13,6 +13,7 @@ namespace BreweryAndWholeSaleManagement.Application.Persistence.Contracts
         Task<T> Add(T entity);
         Task Update(T entity);
         Task Delete(T entity);
+        Task<bool> Exists(int id);
 
     }
 }

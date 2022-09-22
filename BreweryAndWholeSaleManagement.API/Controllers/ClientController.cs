@@ -1,4 +1,5 @@
 ﻿using BreweryAndWholeSaleManagement.Application.DTOs.Request;
+using BreweryAndWholeSaleManagement.Application.Features.ClientRequests.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +19,11 @@ namespace BreweryAndWholeSaleManagement.API.Controllers
 
 
         [HttpPost("RequestQuote")]
-        public async Task<ActionResult<int>> Post([FromBody] ClientRequestDto clientRequestDto)
+        public async Task<ActionResult<QuoteRequestResultDto>> Post([FromBody] ClientRequestDto clientRequestDto)
         {
-            var command = "";
-            var Id = await _mediator.Send(command);
-            return Ok(Id);
+            var command = new QuoteRequestCommand { clientRequestDto = clientRequestDto};
+            QuoteRequestResultDto quoteRequestResultDto = await _mediator.Send(command);
+            return Ok(quoteRequestResultDto);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace BreweryAndWholeSaleManagement.Application.DTOs.Request
         public List<BeerRequestResultDto> BeerRequestsResult { get; set; }
         public int TotalBeerCount { get; set; }
         public string Discount { get; set; }
+        public double TotalBeersPrice { get; set; }
         public double TotalDiscountedPrice { get; set; }
     }
 }
