@@ -25,6 +25,7 @@ namespace BreweryAndWholeSaleManagement.Persistence
             services.AddScoped<IBreweryRepository, BreweryRepository>();
             services.AddScoped<IWholesalerRepository, WholesalerRepository>();
             services.AddScoped<IWholesalerStockRepository, WholesalerStockRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

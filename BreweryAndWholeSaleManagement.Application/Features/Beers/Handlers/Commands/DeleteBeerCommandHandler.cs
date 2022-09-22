@@ -12,19 +12,19 @@ namespace BreweryAndWholeSaleManagement.Application.Features.Beers.Handlers.Comm
 {
     public class DeleteBeerCommandHandler : IRequestHandler<DeleteBeerCommand>
     {
-        private readonly IBeerRepository _beerRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public DeleteBeerCommandHandler(IBeerRepository beerRepository, IMapper mapper)
+        public DeleteBeerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _beerRepository = beerRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<Unit> Handle(DeleteBeerCommand request, CancellationToken cancellationToken)
         {
-            var beer = await _beerRepository.Get(request.Id);
-            await _beerRepository.Delete(beer);
+            var beer = await _unitOfWork.BeerRepository.Get(request.Id);
+            await _unitOfWork.BeerRepository.Delete(beer);
             return Unit.Value;
         }
     }

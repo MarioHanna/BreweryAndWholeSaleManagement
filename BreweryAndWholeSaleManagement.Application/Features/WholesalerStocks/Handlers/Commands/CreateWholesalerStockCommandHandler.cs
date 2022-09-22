@@ -13,19 +13,19 @@ namespace BreweryAndWholeSaleManagement.Application.Features.WholesalerStocks.Ha
 {
     public class CreateWholesalerStockCommandHandler : IRequestHandler<CreateWholesalerStockCommand, int>
     {
-        private readonly IWholesalerStockRepository _wholesalerStockRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateWholesalerStockCommandHandler(IWholesalerStockRepository wholesalerStockRepository, IMapper mapper)
+        public CreateWholesalerStockCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _wholesalerStockRepository = wholesalerStockRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<int> Handle(CreateWholesalerStockCommand request, CancellationToken cancellationToken)
         {
             var wholesalerStock = _mapper.Map<WholesalerStock>(request.createWholesalerStockDto);
-            wholesalerStock = await _wholesalerStockRepository.Add(wholesalerStock);
+            wholesalerStock = await _unitOfWork.wholesalerStockRepository.Add(wholesalerStock);
             return wholesalerStock.Id;
         }
     }

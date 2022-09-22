@@ -17,19 +17,14 @@ namespace BreweryAndWholeSaleManagement.Application.Features.ClientRequests.Hand
 {
     public class QuoteRequestCommandHandler : IRequestHandler<QuoteRequestCommand, QuoteRequestResultDto>
     {
-        private readonly IWholesalerStockRepository _wholesalerStockRepository;
-        private readonly IWholesalerRepository _wholesalerRepository;
-        private readonly IBeerRepository _beerRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public QuoteRequestCommandHandler(IWholesalerStockRepository wholesalerStockRepository,
-            IWholesalerRepository wholesalerRepository,
-            IBeerRepository beerrepository,
+        public QuoteRequestCommandHandler(
+            IUnitOfWork unitOfWork,
             IMapper mapper)
         {
-            _wholesalerStockRepository = wholesalerStockRepository;
-            _beerRepository = beerrepository;
-            _wholesalerRepository = wholesalerRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
@@ -48,14 +43,14 @@ namespace BreweryAndWholeSaleManagement.Application.Features.ClientRequests.Hand
 
             foreach (BeerRequestDto beerRequest in request.clientRequestDto.BeerRequestList)
             {
-                var beerRequestvalidator = new BeerRequestDtoValidator(_wholesalerRepository,_beerRepository);
+                var beerRequestvalidator = new BeerRequestDtoValidator(_unitOfWork.wholesalerRepository, _unitOfWork.BeerRepository);
                 var beerRequestvalidatorResult = await beerRequestvalidator.ValidateAsync(beerRequest);
 
                 if (beerRequestvalidatorResult.IsValid == false)
                     throw new ValidationException(beerRequestvalidatorResult);
 
                 BeerRequestResultDto beerRequestResultDto = new BeerRequestResultDto();
-                WholesalerStock wholesalerStock = await _wholesalerStockRepository.GetWholesalerStockDetails(beerRequest.BeerId, beerRequest.WholesalerId);
+                WholesalerStock wholesalerStock = await _unitOfWork.wholesalerStockRepository.GetWholesalerStockDetails(beerRequest.BeerId, beerRequest.WholesalerId);
                 WholesalerStockDto wholesalerStockDto = _mapper.Map<WholesalerStockDto>(wholesalerStock);
 
 

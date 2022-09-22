@@ -13,18 +13,18 @@ namespace BreweryAndWholeSaleManagement.Application.Features.Beers.Handlers.Quer
 {
     public class GetBeerListRequestHandler : IRequestHandler<GetBeerListRequest, List<BeerDto>>
     {
-        private readonly IBeerRepository _beerRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetBeerListRequestHandler(IBeerRepository beerRepository, IMapper mapper)
+        public GetBeerListRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _beerRepository = beerRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<List<BeerDto>> Handle(GetBeerListRequest request, CancellationToken cancellationToken)
         {
-            var beerList = await _beerRepository.GetAll();
+            var beerList = await _unitOfWork.BeerRepository.GetAll();
             return _mapper.Map<List<BeerDto>>(beerList);
         }
     }

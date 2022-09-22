@@ -12,25 +12,25 @@ namespace BreweryAndWholeSaleManagement.Application.Features.WholesalerStocks.Ha
 {
     public class UpdateWholesalerStockCommandHandler : IRequestHandler<UpdateWholesalerStockCommand, Unit>
     {
-        private readonly IWholesalerStockRepository _wholesalerStockRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public UpdateWholesalerStockCommandHandler(IWholesalerStockRepository wholesalerStockRepository, IMapper mapper)
+        public UpdateWholesalerStockCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _wholesalerStockRepository = wholesalerStockRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<Unit> Handle(UpdateWholesalerStockCommand request, CancellationToken cancellationToken)
         {
-            var oWholesalerStock = await _wholesalerStockRepository.Get(request.updateWholesalerStockDto.Id);
+            var oWholesalerStock = await _unitOfWork.wholesalerStockRepository.Get(request.updateWholesalerStockDto.Id);
 
             if (oWholesalerStock is null)
                 throw new Exception(nameof(oWholesalerStock));
 
             _mapper.Map(request.updateWholesalerStockDto, oWholesalerStock);
 
-            await _wholesalerStockRepository.Update(oWholesalerStock);
+            await _unitOfWork.wholesalerStockRepository.Update(oWholesalerStock);
 
             return Unit.Value;
         }
