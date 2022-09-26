@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreweryAndWholeSaleManageme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreweryAndWholeSaleManagement.Persistence", "BreweryAndWholeSaleManagement.Persistence\BreweryAndWholeSaleManagement.Persistence.csproj", "{6DD8410C-1829-4C3D-83E2-192E031D1DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreweryAndWholeSaleManagement.API", "BreweryAndWholeSaleManagement.API\BreweryAndWholeSaleManagement.API.csproj", "{DB37E2E3-711F-4209-9F2D-36B9C64A1C00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreweryAndWholeSaleManagement.API", "BreweryAndWholeSaleManagement.API\BreweryAndWholeSaleManagement.API.csproj", "{DB37E2E3-711F-4209-9F2D-36B9C64A1C00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{64904CD5-1E4A-4775-9093-63F2F4D7700B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreweryAndWholeSaleManagement.Application.UnitTests", "BreweryAndWholeSaleManagement.Application.UnitTests\BreweryAndWholeSaleManagement.Application.UnitTests.csproj", "{8A123BEB-F24E-4C92-A0B9-FC52BECB8CEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{DB37E2E3-711F-4209-9F2D-36B9C64A1C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB37E2E3-711F-4209-9F2D-36B9C64A1C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB37E2E3-711F-4209-9F2D-36B9C64A1C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A123BEB-F24E-4C92-A0B9-FC52BECB8CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A123BEB-F24E-4C92-A0B9-FC52BECB8CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A123BEB-F24E-4C92-A0B9-FC52BECB8CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A123BEB-F24E-4C92-A0B9-FC52BECB8CEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{A4305FCC-6168-45AF-AC3F-A49F03B1BFB4} = {6D4CFEDA-399F-49D8-B6DE-64D08541CFD2}
 		{6DD8410C-1829-4C3D-83E2-192E031D1DC7} = {05AE5013-1B4D-4FEA-B600-3A30C7F27FBC}
 		{DB37E2E3-711F-4209-9F2D-36B9C64A1C00} = {ABB32603-F3C5-43B0-93BC-EB1ABBFA42F9}
+		{8A123BEB-F24E-4C92-A0B9-FC52BECB8CEC} = {64904CD5-1E4A-4775-9093-63F2F4D7700B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F5DCBB-D1A7-4C64-A00E-91F8C1AD11CB}
